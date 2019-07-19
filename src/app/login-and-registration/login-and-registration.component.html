@@ -1,0 +1,31 @@
+<form #registerForm="ngForm" (ngSubmit)="onFormSubmit(registerForm)">
+    Email:<br>
+    <input type="email" placeholder="Enter email" required [(ngModel)]="email" name="email">
+    <br>
+    Password:<br>
+    <input type="password" placeholder="Enter password" required [(ngModel)]="password" name="password">
+    <br>
+    Password confirmation:<br>
+    <input type="password" placeholder="Confirm password" required [(ngModel)]="passwordConfirmation" name="passwordConfirmation">
+    <br>
+    Full name:<br>
+    <input type="text" placeholder="Enter fullname" required [(ngModel)]="fullName" name="fullName">
+    <br><br>
+    <!-- <input type="submit" value="Registration"> -->
+    <button type="submit">Registration</button>
+</form> 
+<br>
+<form #loginForm="ngForm" (ngSubmit)="onLoginFormSubmit(loginForm)">
+    Email:<br>
+    <input type="email" placeholder="Enter email" required [(ngModel)]="loginEmail" name="email">
+    <br>
+    Password:<br>
+    <input type="password" placeholder="Enter password" required [(ngModel)]="loginPassword" name="password">
+    <br><br>
+    <!-- <input type="submit" value="Login"> -->
+    <button type="submit">Login</button>
+</form>
+<div *ngIf="error">
+    <p>{{error}}</p>
+</div>
+

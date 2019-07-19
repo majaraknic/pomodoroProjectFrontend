@@ -1,0 +1,10 @@
+<form #createTeamForm="ngForm" (ngSubmit)="onCreateTeamSubmit(createForm)">
+    Team name:<br>
+    <input type="text" placeholder="Enter team name" required [(ngModel)]="teamName" name="teamName">
+    <br><br>
+    <!-- <input type="submit" value="Create"> -->
+    <button type="submit">Create</button>
+</form>
+<div *ngIf="error">
+    <p>{{error}}</p>
+</div>

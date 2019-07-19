@@ -1,0 +1,1 @@
+export default (err) => err.status === 401;
