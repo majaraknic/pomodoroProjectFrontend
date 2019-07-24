@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, User } from '../service/httpclient.service';
 import {Router} from "@angular/router"
+import redirectTo from '../helpers/redirectTo';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,6 +9,8 @@ import {Router} from "@angular/router"
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  teams: string[];
 
   teamName: string = "";
 
@@ -17,6 +20,19 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  onGetTeamsSubmit() {
+    this.httpClientService.getTeams().subscribe(response => {
+      this.handleSuccessfulResponse(response)
+    }, err => {
+      console.log('err', err)
+      redirectTo(err) && this.router.navigate(['/login'])
+    });
+  }
+
+  handleSuccessfulResponse(response) {
+    this.teams = response;
   }
 
   onCreateTeamSubmit() {
@@ -35,7 +51,7 @@ export class DashboardComponent implements OnInit {
     }, err => {
       console.log('error:', err);
       // TODO: don't use error.error (change the response)
-      this.error = err.error.message;
+      redirectTo(err) && this.router.navigate(['/login'])
     });
   }
 

@@ -11,7 +11,8 @@ const routes: Routes = [
   { path:'', pathMatch: 'full', redirectTo: '/dashboard'},
   { path:'users', component: UserComponent},
   { path:'login', component: LoginAndRegistrationComponent},
-  { path:'dashboard', component: DashboardComponent}
+  { path:'dashboard', component: DashboardComponent},
+  { path:'teams', component: DashboardComponent}
 
 ];
 

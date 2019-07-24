@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService, User } from '../service/httpclient.service';
 import { Router } from "@angular/router"
+import redirectTo from '../helpers/redirectTo';
 import { stringify } from 'querystring';
 
 @Component({
@@ -62,10 +63,10 @@ export class LoginAndRegistrationComponent implements OnInit {
 
         localStorage.setItem('token', response.token);
         this.router.navigate(['/dashboard'])
-        
+
       }, err => {
         console.log('error:', err);
-        this.error = err.error.message;
+        redirectTo(err) && this.router.navigate(['/login'])
 
         // make a reusable function which takes an error object and checks if status code is 401;
         // if so, redirect to login.

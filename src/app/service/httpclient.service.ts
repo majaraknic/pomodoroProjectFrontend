@@ -9,6 +9,12 @@ export class User{
   ){}
 }
 
+export class Team {
+  constructor(
+    public teamId:string,
+    public teamName:string,
+  ){}
+}
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +29,11 @@ export class HttpClientService {
   getUsers()
   {
     return this.httpClient.get<User[]>('http://localhost:8080/user', {headers: this.headers});
+  }
+
+  getTeams() 
+  {
+    return this.httpClient.get<Team[]>('http://localhost:8080/team', {headers: this.headers})
   }
 
   registerUser(user){
