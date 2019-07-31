@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientService, User } from '../service/httpclient.service';
 import { Router } from "@angular/router"
 import redirectTo from '../helpers/redirectTo';
-import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-login-and-registration',
@@ -62,7 +61,7 @@ export class LoginAndRegistrationComponent implements OnInit {
       .subscribe((response: { success: string, token: string }) => {
 
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/dashboard'])
+        this.router.navigate(['/teams'])
 
       }, err => {
         console.log('error:', err);

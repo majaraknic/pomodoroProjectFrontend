@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from '../service/httpclient.service';
 import redirectTo from '../helpers/redirectTo';
-import { Router, CanActivate } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { Router, /*CanActivate*/ } from '@angular/router';
+//import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   constructor(
     private httpClientService: HttpClientService,
     private router: Router,
-    private auth: AuthService
+    // private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -32,12 +32,12 @@ export class UserComponent implements OnInit {
     this.users = response;
   }
 
-  canActivate(): boolean {
-    if (!this.auth.isAuthenticated()) {
-      this.router.navigate(['login']);
-      return false;
-    }
-      return true;
-  }
+  // canActivate(): boolean {
+  //   if (!this.auth.isAuthenticated()) {
+  //     this.router.navigate(['login']);
+  //     return false;
+  //   }
+  //     return true;
+  // }
 
 }
