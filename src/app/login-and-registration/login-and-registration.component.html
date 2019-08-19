@@ -23,7 +23,7 @@
     <input type="password" placeholder="Enter password" required [(ngModel)]="loginPassword" name="password">
     <br><br>
     <!-- <input type="submit" value="Login"> -->
-    <button type="submit">Login</button>
+    <button (click)="onCreateTeamSubmit()">Login</button>
 </form>
 <div *ngIf="error">
     <p>{{error}}</p>

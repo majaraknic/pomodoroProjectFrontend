@@ -5,14 +5,13 @@ export class User{
   constructor(
     public userId:string,
     public fullName:string,
-    public email:string,
+    public email:string
   ){}
 }
 
 export class Team {
   constructor(
-    public teamId:string,
-    public teamName:string,
+    public teamName:string
   ){}
 }
 
@@ -33,7 +32,7 @@ export class HttpClientService {
 
   getTeams() 
   {
-    return this.httpClient.get<Team[]>('http://localhost:8080/team', {headers: this.headers})
+    return this.httpClient.get<Team[]>('http://localhost:8080/team', {headers: this.headers});
   }
 
   registerUser(user){
@@ -47,6 +46,10 @@ export class HttpClientService {
 
   createTeam(team){
     return this.httpClient.post('http://localhost:8080/team', team);
+  }
+
+  updateUser(user){
+    return this.httpClient.put('http://localhost:8080/user', {headers: this.headers});
   }
 
 }

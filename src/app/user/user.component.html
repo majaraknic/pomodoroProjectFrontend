@@ -1,14 +1,28 @@
+<form #updateUserForm="ngForm" (ngSubmit)="onUpdateUserSubmit(updateForm)">
+        Enter team id:<br>
+        <input type="text" placeholder="Enter team id" required [(ngModel)]="teamId" name="teamId">
+        <br><br>
+        <!-- <input type="submit" value="Create"> -->
+        <button type="submit">Put</button>
+    </form>
+    <div *ngIf="error">
+        <p>{{error}}</p>
+    </div>
+
+<br>
 <table border="1">
     <thead></thead>
     <tr>
         <th>name</th>
         <th>email</th>
+        <th>team_id</th>
     </tr>
 
     <tbody>
         <tr *ngFor="let user of users">
             <td>{{user.fullName}}</td>
             <td>{{user.email}}</td>
+            <td>{{user.teamId}}</td>
         </tr>
     </tbody>
 </table>

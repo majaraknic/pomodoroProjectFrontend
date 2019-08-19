@@ -43,8 +43,7 @@ export class LoginAndRegistrationComponent implements OnInit {
 
       }, err => {
         console.log('error:', err);
-        // TODO: don't use error.error (change the response)
-        this.error = err.error.message;
+        redirectTo(err) && this.router.navigate(['/login'])
       });
 
   }

@@ -13,6 +13,8 @@ export class UserComponent implements OnInit {
 
   users:string[];
 
+  teamId: string = "";
+
   constructor(
     private httpClientService: HttpClientService,
     private router: Router,
@@ -30,6 +32,26 @@ export class UserComponent implements OnInit {
 
   handleSuccessfulResponse(response) {
     this.users = response;
+  }
+
+  onUpdateUserSubmit() {
+    console.log(this.teamId)
+
+      const userUpdateObj = {
+        teamId: this.teamId
+    }
+    this.httpClientService.updateUser(userUpdateObj)
+    .subscribe(response => {
+      if (response === null) {
+        this.router.navigate(['/users'])
+      }
+      console.log('response', response)
+
+    }, err => {
+      console.log('error:', err);
+      // TODO: don't use error.error (change the response)
+      redirectTo(err) && this.router.navigate(['/login'])
+    });
   }
 
   // canActivate(): boolean {
